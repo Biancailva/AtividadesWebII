@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIs de cep</title>
+</head>
+<body>
+    <input id="cep" placeholder="Digite uma de uma cidade">
+    <button onclick="buscarCep()">Buscar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function buscarCep() {
+        const cep = document.getElementById('cep').value;
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(r => r.json())
+        .then(d => {
+        document.getElementById('resultado').innerText =
+        `O cep é de ${d.localidade}.`;
+        });
+    }
+    
+    </script>
+
+</body>
+</html>
