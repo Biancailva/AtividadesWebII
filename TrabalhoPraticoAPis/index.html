@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorando APIs Públicas</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: cornflowerblue;
+        }
+
+        #results {
+        margin-top: 20px;
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        color: rgb(0, 0, 0);
+        background-color: aliceblue;
+        }
+
+        table, th, td {
+        border: 1px solid rgb(0, 0, 0);
+        }
+
+        th, td {
+        padding: 10px;
+        text-align: left;
+        }
+        input{
+            padding: 5px;
+            border-radius: 5px;
+        
+        }
+        button{
+            padding: 5px;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color: rgb(0, 255, 42);
+        }
+        h1{
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Atividade/Trabalho Prático</h1>
+    <div>
+        <input type="text" id="nome" placeholder="Digite um nome">
+        <button id="botao">Buscar</button>
+    </div>
+    <div id="results"></div>
+    <script>
+        document.getElementById('botao').addEventListener('click', async () => {
+        const name = document.getElementById('nome').value;
+        const tabela = document.getElementById('results');
+        tabela.innerHTML = ''; 
+
+    try {
+        
+        const usuario = await fetch(`https://api.agify.io?name=${name}`);
+        const ver = await usuario.json();
+
+        const genero = await fetch(`https://api.genderize.io?name=${name}`);
+        const visualizar = await genero.json();
+
+        tabela.innerHTML = `
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Idade Estimada</th>
+                    <th>Gênero Estimado</th>
+                </tr>
+                <tr>
+                    <td>${name}</td>
+                    <td>${ver.age}</td>
+                    <td>${visualizar.gender}</td>
+                </tr>
+            </table>
+        `;
+    } catch (error) {
+        tabela.innerHTML = `<p>Erro ao buscar dados. Tente novamente.</p>`;
+        console.error('Erro:', error);
+    }
+});
+
+    </script>
+</body>
+</html>
