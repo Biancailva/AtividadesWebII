@@ -1,0 +1,13 @@
+[
+    { "term": "Aplicação", "definition": "APDU" },
+    { "term": "Apresentação", "definition": "PPDU" },
+    { "term": "Sessão", "definition": "SPDU" },
+    { "term": "Tranporte", "definition": "Segmento" },
+    { "term": "Rede", "definition": "Pacotes" },
+    { "term": "Enlace", "definition": "Frames" },
+    { "term": "Física", "definition": "Bits" },
+    { "term": "Conexão-Orientada", "definition": "Sistema Telefonico" },
+    { "term": "Conexão Não-Orientada", "definition": "Sistema Postal" },
+    { "term": "Confiáveis", "definition": "Confirmado" },
+    { "term": "Não-Confiáveis", "definition": "Não Confirmado" }
+]
